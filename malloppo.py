@@ -22,19 +22,24 @@ def gioco():
 	#global ord3
 	global ordtot
 	global soldi
+	evadi = 0
 	nuovo = random.randint(30,55)
 	ordtot = ordtot+nuovo
 	print "Hai", ordtot, "ordini"
 	spesa = random.randint(185,250)
 	print "Ogni ordine ti frutta 200€. Tu per evadere un ordine ne spendi", spesa
 	soldi = soldi + (nuovo * 200)
-	evadi = input("Quanti ordini vuoi evadere?")
+	while evadi <= 0:
+		evadi = input("Quanti ordini vuoi evadere?")
 	ordtot = ordtot-evadi
 	soldi = soldi - (spesa*evadi)
 	print "Ora hai", soldi, "Euro"
 	svizzera = raw_input("Scrivi scappa e premi ok per scappare in Svizzera. Costerà 1/3 del tuo budget.: ")
 	raw_input("Clicca su invio per continuare")
 	turno = turno +1 
+	if soldi < 0:
+		print "sei fallito"
+		exit()
 	while ordtot > evadi*6 or evadi < 10 and soldi > 10000:
 		k =random.randint(1,5)
 		if k == 4:
@@ -75,12 +80,14 @@ def gioco5():
 		#global ord3
 		global ordtot
 		global soldi
+		evadi = 0
 		nuovo = random.randint(5,25)
 		ordtot = ordtot+nuovo
 		print "Hai", ordtot, "ordini"
 		print "Ogni ordine ti frutta 200€. Tu per evadere un ordine ne spendi 175"
 		soldi = soldi + (nuovo * 200)
-		evadi = input("Quanti ordini vuoi evadere?")
+		while evadi <= 0:
+			evadi = input("Quanti ordini vuoi evadere?")
 		ordtot = ordtot-evadi
 		soldi = soldi - (175*evadi)
 		print "Ora hai", soldi, "Euro"
