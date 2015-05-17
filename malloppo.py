@@ -38,16 +38,30 @@ def gioco():
 	raw_input("Clicca su invio per continuare")
 	turno = turno +1 
 	if soldi < 0:
-		print "sei fallito"
-		exit()
+		l = random.randint(1,6)
+		if l == 3:
+			print "sono un anonimo benefattore e salverò la tua azienda"
+			soldi = 1000
+			gioco()
+		else:
+			print "Gendarmeria Fiscale. Lei è in arresto per fallimento"
+			exit()
 	while ordtot > evadi*6 or evadi < 10 and soldi > 10000:
-		k =random.randint(1,5)
-		if k == 4:
+		k =random.randint(1,10)
+		if k == 8 and soldi%2 == 0:
 			print "Buongiorno Polizia"
 			print "Sono state segnalate irregolarità nel suo negozio"
 			print "Lei è stato denunziato e il suo negozio verrà chiuso"
 			print nome, "è stato chiuso al turno", turno, "dalla Polizia che ha sequestrato Euro", soldi
 			exit()
+		if k == 2:
+			print "Buongiorno Gendarmeria fiscale"
+			print "Lei ha commesso reati fiscali!"
+			print "Paga il 5% per coprire tutto"
+			soldi = soldi*0.95
+			os.system("clear")
+			gioco()
+			
 	if svizzera == "scappa":
 		suisse = random.randint(1,6)
 		if suisse == 4:
