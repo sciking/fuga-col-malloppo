@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 print "Fuga col malloppo"
 print "Il gioco in cui devi truffare più persone possibile prima di essere arrestato!"
