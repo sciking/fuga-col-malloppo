@@ -40,6 +40,11 @@ def gioco():
 	except SyntaxError:
 		print "Errore!"
 		os.system("clear")
+		global soldi
+		global nuovi
+		os.system("clear")
+		ordtot = ordtot - nuovi
+		soldi = soldi - (nuovo*200)
 		gioco()
 	ordtot = ordtot-evadi
 	soldi = soldi - (spesa*evadi)
@@ -141,9 +146,6 @@ def gioco5():
 		os.system("clear")
 	gioco()
 gioco5()		
-
-	
-	
 
 	
 	
