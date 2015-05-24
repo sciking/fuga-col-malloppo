@@ -143,7 +143,7 @@ def gioco():
 	svizzera = raw_input("Scrivi scappa e premi ok per scappare in Svizzera. Costerà 1/3 del tuo budget.: ")
 	raw_input("Clicca su invio per continuare")
 	turno = turno +1 
-	if soldi < 0:
+	if soldi < -2500:
 		l = random.randint(1,6)
 		if l == 3:
 			print "sono un anonimo benefattore e salverò la tua azienda"
