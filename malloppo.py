@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/ python
 # -*- coding: utf-8 -*-
 import os 
 os.system("clear")
@@ -152,7 +152,7 @@ def gioco():
 		else:
 			print "Gendarmeria Fiscale. Lei è in arresto per fallimento"
 			print "La Gendarmeria Fiscale ha chiuso", nome
-			print nome, "viene scarcerato subito e non potrà avviare imprese per 5 anni"
+			print tuonome, "viene scarcerato subito e non potrà avviare imprese per 5 anni"
 			exit()
 	while ordtot > evadi*6 or evadi < 30 and soldi > 50000:
 		k =random.randint(1,10)
@@ -169,6 +169,7 @@ def gioco():
 			print "Lei ha commesso reati fiscali!"
 			print "Paga il 5% per coprire tutto"
 			soldi = soldi*0.95
+			input("premi invio per continuare")
 			os.system("clear")
 			poss()
 		else:
