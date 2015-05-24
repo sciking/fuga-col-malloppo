@@ -169,7 +169,7 @@ def gioco():
 			print "Lei ha commesso reati fiscali!"
 			print "Paga il 5% per coprire tutto"
 			soldi = soldi*0.95
-			input("premi invio per continuare")
+			raw_input("premi invio per continuare")
 			os.system("clear")
 			poss()
 		else:
