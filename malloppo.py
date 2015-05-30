@@ -34,7 +34,7 @@ def poss():
 		print "Un fornitore polacco ti trova dei cellulari più economici e guadagni 700 Euro"
 		soldi = soldi + 700
 		gioco()
-	elif poss == 4 and evadi < 50:
+	elif poss == 4 and evadi:
 		print "Dei ladri ti hanno rapinato il negozio. Perdi 5000€, ma l'assicurazione te ne ridà 3000"
 		soldi = soldi - 2000
 		gioco()
@@ -45,7 +45,7 @@ def poss():
 		soldi = soldi + 15000
 		print "Hai ottenuto", soldi
 		exit()
-	elif poss == 6:
+	elif poss == 6 < 50:
 		print "Tenti di andare in Slovenia per ripulire soldi"
 		print "Buongiorno signore"
 		print "Lei è in stato di fermo"
@@ -189,6 +189,7 @@ def gioco():
 			print "Sei fuggito in Svizzera con", soldi/2
 			exit()
 		elif suisse == 6:
+			soldi = soldi*0.66
 			print "Signor", tuonome, "i suoi documenti non sono validi"
 			print "La Svizzera ti ha respinto, torni in Italia."
 			poss()
