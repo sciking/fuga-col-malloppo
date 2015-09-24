@@ -9,11 +9,15 @@ turno = 1
 #ord1 = 0
 #ord2 = 0
 galera = 0
+halt = 0
 nuovo = 0
 #ord3 = 0
 ordtot = 0
+pomi = 100
+trei = 0
 evadi = 0
 soldi = 10000
+soldi = 299000
 print """ Benvenuto. Il tuo obiettivo è quello di truffare più persone possibili. Sfrutta al massimo i primi cinque turni in cui non puoi essere arrestato e in cui tutti presumeranno la tua buona fede."""
 print " Gioco creato da Sciking"
 tuonome = raw_input("Come ti chiami?: ")
@@ -44,7 +48,7 @@ def poss():
 	elif poss == 5 and soldi > 100000 and galera > 2:
 		print "Riesci a truffare il fisco per 15000Å, ma per evitare l'arresto fuggi in Svizzera."
 		print "Benvenuto in Svizzera, signor", tuonome
-		print "La polizia ha chiuso", nome, "al turno", turno
+		print "La polizia ha chiuso", nome, "alla settimana", turno
 		soldi = soldi + 15000
 		print "Hai ottenuto", soldi
 		exit()
@@ -131,13 +135,34 @@ def gioco():
 	global ordtot
 	global galera
 	global soldi
+	global trei
+	global pomi
+	global halt
 	round(soldi,2)
 	evadi = 0
 	nuovo = random.randint(300,555)
+	nuovopom = random.randint(5,100)
 	ordtot = ordtot+nuovo
+	if trei == 1:
+		soldi = soldi - 100
 	print nome, "di", tuonome, "- Sistema Informatico"
-	print "Turno", turno
+	print "Settimana", turno
 	print "Hai", ordtot, "ordini"
+	if turno%5 == 0:
+		halt = 0
+	if trei == 1 and halt == 0:
+		print "Hai", nuovopom, "Ordini di PomPhone"
+		olpo = pomi
+		pomi = pomi - nuovopom
+		if pomi < 0:
+			print "non puoi soddisfare altri ordini"
+			diffo = nuovopom - pomi
+			soldi = soldi*((nuovopom-diffo)*400)
+			halt = 1
+
+		else:
+			soldi = soldi*(nuovopom*400)
+			halt = 0
 	print "Hai", soldi, "Ambrogi"
 	spesa = random.randint(180,245)
 	print "Ogni ordine ti frutta 200Å. Tu per evadere un ordine ne spendi", spesa
@@ -156,16 +181,35 @@ def gioco():
 		gioco()
 	ordtot = ordtot-evadi
 	soldi = soldi - (spesa*evadi)
+	pomord = 0
+	if turno%5 == 0 and trei == 1:
+		print "Quanti PomPhone vuoi ordinare per queste cinque settimane? \n Massimo 500, un PomPhone costa 300Å"
+		while pomord > 500 or pomord < 1:
+			pomord = input(">>>")
+		soldor = soldi
+		soldi = soldi-(500*pomord)
+		if soldi < 1000:
+			print "Ordine annullato"
+			soldi = soldor
+		pomi = pomord
+
+
 	soldi = round(soldi,2)
 	print "Ora hai", soldi, "Ambrogi"
 	svizzera = raw_input("Scrivi scappa e premi ok per scappare in Svizzera. Costerà 1/3 del tuo budget.: ")
 	raw_input("Clicca su invio per continuare")
+	if soldi > 300000 and trei == 0:
+		print "Ora puoi aprire una nuova sede, il che ti darà più ordini e gli esclusivi PomPhone."
+		noeuvnegozzi = raw_input("Scrivi Si per abbandonare Como e aprire una nuova sede a Treviglio")
+		noeuvnegozzi = noeuvnegozzi.lower()
+		if noeuvnegozzi == "si":
+			trei = 1
 	turno = turno +1 
 	if soldi < -2500:
 		l = random.randint(1,6)
 		if l == 3:
 			print "sono un anonimo benefattore e salverò la tua azienda"
-			soldi = 1000
+			soldi = 5000
 			poss()
 		else:
 			print "Gendarmeria Fiscale. Lei è in arresto per fallimento"
@@ -181,7 +225,7 @@ def gioco():
 			print "Buongiorno Polizia"
 			print "Sono state segnalate irregolarità nel suo negozio"
 			print "Lei è stato denunziato e il suo negozio verrà chiuso"
-			print nome, "è stato chiuso al turno", turno, "dalla Polizia che ha sequestrato Ambrogi", soldi
+			print nome, "è stato chiuso alla settimana", turno, "dalla Polizia che ha sequestrato Ambrogi", soldi
 			print tuonome, "viene arrestato il giorno dopo dalla Polizia per truffa"
 			exit()
 		elif k == 2:
@@ -228,7 +272,7 @@ def gioco5():
 	global turno
 	while turno < 6:
 		print nome, "di", tuonome, "- Sistema Informatico"
-		print "Turno", turno
+		print "Settimana", turno
 		#global ord1
 		#global ord2
 		#global ord3
