@@ -17,7 +17,6 @@ pomi = 100
 trei = 0
 evadi = 0
 soldi = 10000
-soldi = 299000
 print """ Benvenuto. Il tuo obiettivo è quello di truffare più persone possibili. Sfrutta al massimo i primi cinque turni in cui non puoi essere arrestato e in cui tutti presumeranno la tua buona fede."""
 print " Gioco creato da Sciking"
 tuonome = raw_input("Come ti chiami?: ")
@@ -150,19 +149,6 @@ def gioco():
 	print "Hai", ordtot, "ordini"
 	if turno%5 == 0:
 		halt = 0
-	if trei == 1 and halt == 0:
-		print "Hai", nuovopom, "Ordini di PomPhone"
-		olpo = pomi
-		pomi = pomi - nuovopom
-		if pomi < 0:
-			print "non puoi soddisfare altri ordini"
-			diffo = nuovopom - pomi
-			soldi = soldi*((nuovopom-diffo)*400)
-			halt = 1
-
-		else:
-			soldi = soldi*(nuovopom*400)
-			halt = 0
 	print "Hai", soldi, "Ambrogi"
 	spesa = random.randint(180,245)
 	print "Ogni ordine ti frutta 200Å. Tu per evadere un ordine ne spendi", spesa
@@ -187,18 +173,30 @@ def gioco():
 		while pomord > 500 or pomord < 1:
 			pomord = input(">>>")
 		soldor = soldi
-		soldi = soldi-(500*pomord)
+		soldi = soldi-(300*pomord)
 		if soldi < 1000:
 			print "Ordine annullato"
 			soldi = soldor
 		pomi = pomord
+		pomik = random.randint(1,500)
+		if pomik > pomi:
+			pomik = pomi
+			print "Non riesci a soddisfare tutti gli ordini di Pomphone"
+			soldi = soldi+(pomik*400)
+		else:
+			print "Hai un disavanzo"
+			soldi = soldi+(pomik*400)
+			disav = pomi - pomik
+			soldi = soldi + (disav*50)
+			print "La PomTecnologie di Manerbio ti da 50Å per pezzo non venduto"
+
 
 
 	soldi = round(soldi,2)
 	print "Ora hai", soldi, "Ambrogi"
 	svizzera = raw_input("Scrivi scappa e premi ok per scappare in Svizzera. Costerà 1/3 del tuo budget.: ")
 	raw_input("Clicca su invio per continuare")
-	if soldi > 300000 and trei == 0:
+	if soldi > 200000 and trei == 0:
 		print "Ora puoi aprire una nuova sede, il che ti darà più ordini e gli esclusivi PomPhone."
 		noeuvnegozzi = raw_input("Scrivi Si per abbandonare Como e aprire una nuova sede a Treviglio")
 		noeuvnegozzi = noeuvnegozzi.lower()
@@ -206,7 +204,7 @@ def gioco():
 			trei = 1
 	turno = turno +1 
 	if soldi < -2500:
-		l = random.randint(1,6)
+		l = random.randint(1,5)
 		if l == 3:
 			print "sono un anonimo benefattore e salverò la tua azienda"
 			soldi = 5000
@@ -216,9 +214,9 @@ def gioco():
 			print "La Gendarmeria Fiscale ha chiuso", nome
 			print tuonome, "viene scarcerato subito e non potrà avviare imprese per 5 anni"
 			exit()
-	while ordtot > evadi*6 or evadi < ordtot/6 and soldi > 30000:
+	while ordtot > evadi*6 or evadi < ordtot/6 and soldi > 20000:
 		k =random.randint(1,10)
-		print k 
+		#print k 
 		if k == 8:
 			galera = galera + 1
 		elif k == 8 and galera > 3:
@@ -243,7 +241,7 @@ def gioco():
 	if svizzera == "scappa":
 		suisse = random.randint(1,6)
 		if suisse == 4:
-			print "Sei stato fermato al valico di Brogeda dalle autorità milanesi"
+			print "Sei stato fermato al valico del Bernina dalle autorità milanesi"
 			print "Sei in arresto per truffa e contrabbando"
 			print "La Polizia Doganale ha chiuso", nome, "e ha sequestrato", soldi*0.66
 			print "Il giorno dopo i giornali titolano 'Arrestato", tuonome, "al valico di frontiera'"
