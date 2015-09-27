@@ -27,7 +27,7 @@ def poss():
 	global ordtot
 	global soldi
 	global galera
-	poss = random.randint(1,20)
+	poss = random.randint(1,25)
 	if poss == 1:
 		print "Hai vinto 1000 Ambrogi al lotto"
 		soldi = soldi + 1000
@@ -77,6 +77,7 @@ def poss():
 		gioco()
 	elif poss == 9:
 		print "Vieni recensito da un blog famoso e ottieni molti nuovi ordini!"
+		soldi = soldi + soldi*(ordtot/10)
 		ordtot = ordtot*1.10
 		int(ordtot)
 		gioco()
@@ -122,6 +123,32 @@ def poss():
 		print "Fallisci investimenti. Perdi il 30% dei tuoi soldi"
 		soldi = soldi*0.7
 		gioco()
+	elif poss == 21:
+		print "I survegliant di Como ti multano per 500Å"
+		soldi = soldi - 500
+		gioco()
+	elif poss ==  22:
+		print "Hai investito in un negozio di paposs"
+		if turno%2 == 0:
+			print "Guadagni 5000Å"
+			soldi = soldi + 5000
+		else:
+			print "Perdi 6500Å"
+			soldi = soldi - 6500
+		gioco()
+	elif poss == 23:
+		print "Vendi per errore telefoni a Chiasso, e devi pagare le imposte alla Svizzera"
+		soldi = soldi - ((ordtot/5)*15)
+		gioco()
+	elif poss == 24:
+		print "Subaffitti parte del tuo negozio ad un losco individuo che millanta di curare gente \n Ci guadagni 3500 Å, ma quello è davvero strano"
+		soldi = soldi + 3500
+		gioco()
+	elif poss == 25:
+		print "Devi rimborsare", ordtot/10, "ordini"
+		soldi = soldi - (ordtot/10)*195
+		ordtot = ordtot*0.9
+		
 	else:
 		gioco()
 	gioco()
