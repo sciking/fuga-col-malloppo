@@ -50,11 +50,11 @@ def poss():
 		print "La polizia ha chiuso", nome, "alla settimana", turno
 		soldi = soldi + 15000
 		print "Hai ottenuto", soldi
-		exit()
+		punt()
 	elif poss == 5:
 		print "Sei riuscito a rubare dei telefoni per soddisfare ordini."
 		ordtot = ordtot*0.75
-		round(ordtot,0)
+		int(ordtot)
 		gioco()
 	elif poss == 6 and galera == 2:
 		print "Tenti di andare in Tirolo per ripulire soldi"
@@ -78,11 +78,11 @@ def poss():
 	elif poss == 9:
 		print "Vieni recensito da un blog famoso e ottieni molti nuovi ordini!"
 		ordtot = ordtot*1.10
-		round(ordtot,0)
+		int(ordtot)
 		gioco()
 	elif poss == 10:
 		print "Paghi 5000Å un noto blogger per ottenere una buona recensione"
-		soldi = soldi - 50000
+		soldi = soldi - 5000
 	elif poss == 11:
 		print "Un uomo travestito da panino che fa versi da scimmia vicino a", nome,"fa divertire i turisti"
 		gioco()
@@ -137,7 +137,7 @@ def gioco():
 	global trei
 	global pomi
 	global halt
-	round(soldi,2)
+	int(soldi)
 	evadi = 0
 	nuovo = random.randint(300,555)
 	nuovopom = random.randint(5,100)
@@ -147,8 +147,6 @@ def gioco():
 	print nome, "di", tuonome, "- Sistema Informatico"
 	print "Settimana", turno
 	print "Hai", ordtot, "ordini"
-	if turno%5 == 0:
-		halt = 0
 	print "Hai", soldi, "Ambrogi"
 	spesa = random.randint(180,245)
 	print "Ogni ordine ti frutta 200Å. Tu per evadere un ordine ne spendi", spesa
@@ -192,7 +190,7 @@ def gioco():
 
 
 
-	soldi = round(soldi,2)
+	soldi = int(soldi)
 	print "Ora hai", soldi, "Ambrogi"
 	svizzera = raw_input("Scrivi scappa e premi ok per scappare in Svizzera. Costerà 1/3 del tuo budget.: ")
 	raw_input("Clicca su invio per continuare")
@@ -249,22 +247,44 @@ def gioco():
 		elif suisse == 3:
 			print "C'è stato un grave problema. Perdi metà dei tuoi soldi"
 			print "Sei fuggito in Svizzera con", soldi/2
-			exit()
+			punt()
 		elif suisse == 6:
 			soldi = soldi*0.66
 			print "Signor", tuonome, "i suoi documenti non sono validi"
 			print "La Svizzera ti ha respinto, torni a Milano."
+			os.system("clear")
 			poss()
 		else:
 			print "Benvenuto in Svizzera, signor", tuonome
 			print "Sei stato ammesso in Svizzera con Ambrogi", soldi*0.66
 			print "Le autorità hanno chiuso", nome
-			exit()
+			punt()
 	else:
 		os.system("clear")
 		poss()
 	
+def punt():
+	global soldi
+	global turno
+	global ordtot
+	print "*"*20
+	coef = round(turno/10,1)
+	if turno <= 10:
+		coeff = 1
 
+	punti = (soldi*coef)-(ordtot*1.75)
+	punti = round(punti,0)
+	punti = int(punti)
+	if punti > 0:
+		print "Hai vinto"
+		print "Hai ottenuto", punti, "punti!"
+		exit()
+	else:
+		print "Hai perso"
+		print "Hai ottenuto", punti, "punti :( "
+	exit()
+
+	
 	
 def gioco5():
 	global turno
@@ -296,7 +316,7 @@ def gioco5():
 			gioco5()
 		ordtot = ordtot-evadi
 		soldi = soldi - (175*evadi)
-		soldi = round(soldi,2)
+		soldi = int(soldi)
 		print "Ora hai", soldi, "Ambrogi"
 		raw_input("Clicca su invio per continuare")
 		turno = turno +1 
