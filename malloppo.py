@@ -1,7 +1,9 @@
 #!/usr/bin/ python
 # -*- coding: utf-8 -*-
 import os 
-os.system("clear")
+def clear():
+	os.system('cls' if os.name == 'nt' else 'clear')
+clear()
 print "Fuga col malloppo"
 print "Il gioco in cui devi truffare più persone possibile prima di essere arrestato!"
 import random
@@ -22,7 +24,7 @@ print " Gioco creato da Sciking"
 tuonome = raw_input("Come ti chiami?: ")
 nome = raw_input("Come vuoi chiamare il tuo negozio? ")
 raw_input("Premi invio per iniziare:")
-os.system("clear")
+clear()
 def poss():
 	global ordtot
 	global soldi
@@ -53,8 +55,7 @@ def poss():
 		punt()
 	elif poss == 5:
 		print "Sei riuscito a rubare dei telefoni per soddisfare ordini."
-		ordtot = ordtot*0.75
-		int(ordtot)
+		ordtot = int(ordtot*0.75)
 		gioco()
 	elif poss == 6 and galera == 2:
 		print "Tenti di andare in Tirolo per ripulire soldi"
@@ -64,22 +65,21 @@ def poss():
 		print "Sono stati sequestrati Ambrogi", soldi
 		exit()
 	elif poss == 6:
-		print "Vendi coltelli a serramanico nel negozio \n La Polizia ti fa 3500Å di multa"
+		print "Vendi coltelli a serramanico nel negozio \nLa Polizia ti fa 3500Å di multa"
 		soldi = soldi - 3500
 		gioco()
 	elif poss == 7:
 		print "Il tuo fornitore sammarinese ti fa degli sconti per l'abbassamento dell'IVA locale. Prendi il 10% dei tuoi soldi"
-		soldi = soldi*1.10
+		soldi = int(soldi*1.10)
 		gioco()
 	elif poss == 8:
 		print "Aumenta l'IVA. Perdi il 3 % dei tuoi soldi"
-		soldi = soldi*0.97
+		soldi = int(soldi*0.97)
 		gioco()
 	elif poss == 9:
 		print "Vieni recensito da un blog famoso e ottieni molti nuovi ordini!"
-		soldi = soldi + soldi*(ordtot/10)
-		ordtot = ordtot*1.10
-		int(ordtot)
+		isoldi = int(soldi + soldi*(ordtot/10))
+		ordtot = int(ordtot*1.10)
 		gioco()
 	elif poss == 10:
 		print "Paghi 5000Å un noto blogger per ottenere una buona recensione"
@@ -104,7 +104,7 @@ def poss():
 		gioco()
 	elif poss == 16:
 		print "Hai immatricolato male il veicolo, vieni multato dalla Polizia"
-		soldi = soldi*0.97
+		soldi = int(soldi*0.97)
 		gioco()
 	elif poss == 17 and soldi > 65000:
 		print "Sei stato denunziato per attività scorrette"
@@ -121,14 +121,14 @@ def poss():
 		gioco()
 	elif poss == 20:
 		print "Fallisci investimenti. Perdi il 30% dei tuoi soldi"
-		soldi = soldi*0.7
+		soldi = int(soldi*0.7)
 		gioco()
 	elif poss == 21:
-		print "I survegliant di Como ti multano per 500Å"
+		print "I sorvegliant di Como ti multano per 500Å"
 		soldi = soldi - 500
 		gioco()
 	elif poss ==  22:
-		print "Hai investito in un negozio di paposs"
+		print "Hai investito in un negozio di papòss"
 		if turno%2 == 0:
 			print "Guadagni 5000Å"
 			soldi = soldi + 5000
@@ -138,16 +138,16 @@ def poss():
 		gioco()
 	elif poss == 23:
 		print "Vendi per errore telefoni a Chiasso, e devi pagare le imposte alla Svizzera"
-		soldi = soldi - ((ordtot/5)*15)
+		soldi = int(soldi - ((ordtot/5)*15))
 		gioco()
 	elif poss == 24:
-		print "Subaffitti parte del tuo negozio ad un losco individuo che millanta di curare gente \n Ci guadagni 3500 Å, ma quello è davvero strano"
+		print "Subaffitti parte del tuo negozio ad un losco individuo che millanta di curare gente \nCi guadagni 3500 Å, ma quello è davvero strano"
 		soldi = soldi + 3500
 		gioco()
 	elif poss == 25:
-		print "Devi rimborsare", ordtot/10, "ordini"
-		soldi = soldi - (ordtot/10)*195
-		ordtot = ordtot*0.9
+		print "Devi rimborsare", int(ordtot/10), "ordini"
+		soldi = int(soldi - (ordtot/10)*195)
+		ordtot = int(ordtot*0.9)
 		
 	else:
 		gioco()
@@ -183,10 +183,10 @@ def gioco():
 			evadi = input("Quanti ordini vuoi evadere?")
 	except SyntaxError or NameError:
 		print "Errore!"
-		os.system("clear")
+		clear()
 		global soldi
 		global nuovi
-		os.system("clear")
+		clear()
 		ordtot = ordtot - nuovi
 		soldi = soldi - (nuovo*200)
 		gioco()
@@ -255,31 +255,31 @@ def gioco():
 			print "Buongiorno Gendarmeria fiscale"
 			print "Lei ha commesso reati fiscali!"
 			print "Paga il 5% per coprire tutto"
-			soldi = soldi*0.95
+			soldi = int(soldi*0.95)
 			raw_input("premi invio per continuare")
-			os.system("clear")
+			clear()
 			poss()
 		else:
-			os.system("clear")
+			clear()
 			break
 			
 	if svizzera == "scappa":
 		suisse = random.randint(1,6)
 		if suisse == 4:
-			print "Sei stato fermato al valico del Bernina dalle autorità milanesi"
+			print "Sei stato fermato al valico del Bernina dalle autorità lombarde"
 			print "Sei in arresto per truffa e contrabbando"
-			print "La Polizia Doganale ha chiuso", nome, "e ha sequestrato", soldi*0.66
+			print "La Polizia Doganale ha chiuso", nome, "e ha sequestrato", int(soldi*0.66)
 			print "Il giorno dopo i giornali titolano 'Arrestato", tuonome, "al valico di frontiera'"
 			exit()
 		elif suisse == 3:
 			print "C'è stato un grave problema. Perdi metà dei tuoi soldi"
-			print "Sei fuggito in Svizzera con", soldi/2
+			print "Sei fuggito in Svizzera con", int(soldi/2)
 			punt()
 		elif suisse == 6:
 			soldi = soldi*0.66
 			print "Signor", tuonome, "i suoi documenti non sono validi"
 			print "La Svizzera ti ha respinto, torni a Milano."
-			os.system("clear")
+			clear()
 			poss()
 		else:
 			print "Benvenuto in Svizzera, signor", tuonome
@@ -287,7 +287,7 @@ def gioco():
 			print "Le autorità hanno chiuso", nome
 			punt()
 	else:
-		os.system("clear")
+		clear()
 		poss()
 	
 def punt():
@@ -337,7 +337,7 @@ def gioco5():
 			print "errore!"
 			global soldi
 			global nuovi
-			os.system("clear")
+			clear()
 			ordtot = ordtot - nuovi
 			soldi = soldi - (nuovo*200)
 			gioco5()
@@ -347,6 +347,6 @@ def gioco5():
 		print "Ora hai", soldi, "Ambrogi"
 		raw_input("Clicca su invio per continuare")
 		turno = turno +1 
-		os.system("clear")
+		clear()
 	gioco()
 gioco5()		
