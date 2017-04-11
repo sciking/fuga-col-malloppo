@@ -29,7 +29,7 @@ def poss():
 	global ordtot
 	global soldi
 	global galera
-	poss = random.randint(1,25)
+	poss = random.randint(1,30)
 	if poss == 1:
 		print "Hai vinto 1000 Ambrogi al lotto"
 		soldi = soldi + 1000
@@ -148,6 +148,23 @@ def poss():
 		print "Devi rimborsare", int(ordtot/10), "ordini"
 		soldi = int(soldi - (ordtot/10)*195)
 		ordtot = int(ordtot*0.9)
+	elif poss == 26:
+		print "Accedi ad un fondo del governo per le piccole imprese"
+		soldi = soldi+1500
+	elif poss == 27:
+		print "Vieni multato per oscenità dopo aver fatto sesso con una ragazza nel negozio"
+		soldi = soldi-2000
+	elif poss == 28:
+		print "La Gendarmeria Fiscale scopre che hai diritto ad un rimborso per tasse pagate per errore"
+		soldi = int(soldi+soldi*0,3)
+	elif poss == 29:
+		print "La Gendarmeria Fiscale scopre che hai evaso somme sulla vendita di cover e ricevi una piccola sanzione"
+		soldi = soldi - 1000
+	elif poss == 30:
+		print "Un tuo amico subaffitta 40 ordini a te per 250Å"
+		ordtot = ordtot + 40
+		soldi = soldi + 10000
+		
 		
 	else:
 		gioco()
@@ -214,6 +231,8 @@ def gioco():
 			disav = pomi - pomik
 			soldi = soldi + (disav*50)
 			print "La PomTecnologie di Manerbio ti da 50Å per pezzo non venduto"
+		pomi = 0
+		
 
 
 
@@ -223,7 +242,7 @@ def gioco():
 	raw_input("Clicca su invio per continuare")
 	if soldi > 200000 and trei == 0:
 		print "Ora puoi aprire una nuova sede, il che ti darà più ordini e gli esclusivi PomPhone."
-		noeuvnegozzi = raw_input("Scrivi Si per abbandonare Como e aprire una nuova sede a Treviglio")
+		noeuvnegozzi = raw_input("Scrivi Si per abbandonare Como e aprire una nuova sede a Treviglio: ")
 		noeuvnegozzi = noeuvnegozzi.lower()
 		if noeuvnegozzi == "si":
 			trei = 1
