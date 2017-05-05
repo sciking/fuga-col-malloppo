@@ -292,7 +292,8 @@ def gioco():
 			exit()
 		elif suisse == 3:
 			print "C'è stato un grave problema. Perdi metà dei tuoi soldi"
-			print "Sei fuggito in Svizzera con", int(soldi/2)
+			soldi = int(soldi/2)
+			print "Sei fuggito in Svizzera con", soldi
 			punt()
 		elif suisse == 6:
 			soldi = soldi*0.66
@@ -318,7 +319,7 @@ def punt():
 	if turno <= 10:
 		coeff = 1
 
-	punti = (soldi*coef)-(ordtot*1.75)
+	punti = (soldi*coef)-(ordtot*2.75)
 	punti = round(punti,0)
 	punti = int(punti)
 	if punti > 0:
