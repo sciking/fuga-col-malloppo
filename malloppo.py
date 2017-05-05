@@ -156,7 +156,7 @@ def poss():
 		soldi = soldi-2000
 	elif poss == 28:
 		print "La Gendarmeria Fiscale scopre che hai diritto ad un rimborso per tasse pagate per errore"
-		soldi = int(soldi+soldi*0,3)
+		soldi = int(soldi+soldi*0.3)
 	elif poss == 29:
 		print "La Gendarmeria Fiscale scopre che hai evaso somme sulla vendita di cover e ricevi una piccola sanzione"
 		soldi = soldi - 1000
