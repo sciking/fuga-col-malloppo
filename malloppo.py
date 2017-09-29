@@ -12,12 +12,14 @@ turno = 1
 #ord2 = 0
 galera = 0
 halt = 0
+pirlava = 0
 nuovo = 0
 #ord3 = 0
 ordtot = 0
 pomi = 100
 trei = 0
 evadi = 0
+pirlava = 0
 soldi = 10000
 print """ Benvenuto. Il tuo obiettivo è quello di truffare più persone possibili. Sfrutta al massimo i primi cinque turni in cui non puoi essere arrestato e in cui tutti presumeranno la tua buona fede."""
 print " Gioco creato da Sciking"
@@ -175,6 +177,7 @@ def gioco():
 	#global ord1
 	#global ord2
 	#global ord3
+	global pirlava
 	global ordtot
 	global galera
 	global soldi
@@ -192,6 +195,12 @@ def gioco():
 	print "Settimana", turno
 	print "Hai", ordtot, "ordini"
 	print "Hai", soldi, "Ambrogi"
+	if pirlava == 1 and turno%3 == 0:
+		ordpirlava = random.randint(20,100)
+		ordtot = ordtot + ordpirlava
+		guad = random.randint(150,300)
+		soldi = ordpirlava*guad+soldi
+		print "Ricevi",ordpirlava, "ordini Pirlava a",guad, "A"
 	spesa = random.randint(180,245)
 	print "Ogni ordine ti frutta 200Å. Tu per evadere un ordine ne spendi", spesa
 	soldi = soldi + (nuovo * 200)
@@ -246,6 +255,13 @@ def gioco():
 		noeuvnegozzi = noeuvnegozzi.lower()
 		if noeuvnegozzi == "si":
 			trei = 1
+	if soldi > 100000 and pirlava == 0:
+		print "Vuoi aderire all'esclusivo Network Pirlava?"
+		print "Uno schema Ponzi esclusivo che con la vendita piramidale \n ti farà guadagnare"
+		tacca = raw_input("Scrivi Si per aderire a Pirlava: ")
+		tacca = tacca.lower()
+		if tacca == "si":
+			pirlava = 1
 	turno = turno +1 
 	if soldi < -2500:
 		l = random.randint(1,5)
