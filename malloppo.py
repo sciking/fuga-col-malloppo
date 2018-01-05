@@ -31,7 +31,7 @@ def poss():
 	global ordtot
 	global soldi
 	global galera
-	poss = random.randint(1,30)
+	poss = random.randint(1,35)
 	if poss == 1:
 		print "Hai vinto 1000 Ambrogi al lotto"
 		soldi = soldi + 1000
@@ -98,7 +98,7 @@ def poss():
 		soldi = soldi + 688
 		gioco()
 	elif poss == 14:
-		print "Tuo figlio vince la gara di rutti in dialetto indetta dalla scuola"
+		print "Tuo figlio vince la gara di rutti indetta dalla scuola"
 		gioco()
 	elif poss == 15:
 		print "Ottieni un rimborso IVA di 2500Å"
@@ -166,8 +166,22 @@ def poss():
 		print "Un tuo amico subaffitta 40 ordini a te per 250Å"
 		ordtot = ordtot + 40
 		soldi = soldi + 10000
-		
-		
+	elif poss == 31:
+		print "Ricicli 100000Å e tieni il 10%"
+		soldi = soldi + 10000
+	elif poss == 32:
+		print "Ricicli 100000Å ma ti becca la Gendarmeria Fiscale. Multa del 50%"
+		soldi = int(soldi/2)
+		galera = galera + 1
+	elif poss == 33:
+		print "Grazie ad un amico in Gendarmeria Fiscale ottieni l'annullamento di una multa"
+		soldi = soldi + 5000
+	elif poss == 34:
+		print "Corrompi il Garante del Commercio per evitare una forte sanzione"
+		soldi = int(soldi*0.7)
+		galera = galera + 1
+	elif poss == 35:		
+		print "Diventi amico del console della Russia Sovietica che ti regala una notte con Ivanka la Puttanka"
 	else:
 		gioco()
 	gioco()
